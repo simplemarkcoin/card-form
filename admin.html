@@ -1,0 +1,45 @@
+<!-- Admin Dashboard - Tailwind, loads /assets/js/admin.js -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50">
+  <section class="min-h-screen flex flex-col items-center justify-start px-4 sm:px-8 py-8">
+    <div class="max-w-4xl w-full bg-white rounded-2xl shadow-lg p-6 sm:p-10 border border-gray-200">
+      <h1 class="text-2xl font-bold text-slate-900 mb-6">Payment Entries Dashboard</h1>
+      <div class="flex justify-between items-center mb-4">
+        <button id="exportCSV" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Export CSV</button>
+        <button id="exportJSON" class="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700">Export JSON</button>
+      </div>
+      <div class="overflow-x-auto">
+        <table class="min-w-full text-sm text-left border">
+          <thead class="bg-gray-100">
+            <tr>
+              <th class="px-4 py-2">#</th>
+              <th class="px-4 py-2">Name</th>
+              <th class="px-4 py-2">Card</th>
+              <th class="px-4 py-2">Amount</th>
+              <th class="px-4 py-2">Date</th>
+              <th class="px-4 py-2">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="entriesTable"></tbody>
+        </table>
+      </div>
+    </div>
+    <!-- Modal -->
+    <div id="entryModal" class="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50 hidden">
+      <div class="bg-white rounded-lg shadow-lg p-6 w-full max-w-md relative">
+        <button id="closeModal" class="absolute top-2 right-2 text-gray-400 hover:text-gray-700">&times;</button>
+        <h2 class="text-xl font-bold mb-4">Entry Details</h2>
+        <div id="modalContent" class="space-y-2"></div>
+      </div>
+    </div>
+  </section>
+  <script src="/assets/js/admin.js"></script>
+</body>
+</html>
