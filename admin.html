@@ -8,44 +8,44 @@
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-50">
-  <div class="min-h-screen bg-gray-50 flex">
-    <!-- Sidebar -->
-    <aside class="w-64 bg-white border-r flex flex-col justify-between">
-      <div>
-        <div class="p-6 border-b">
-          <h1 class="text-xl font-bold text-blue-700">Admin Panel</h1>
+  <div class="min-h-screen bg-gray-50 flex flex-col md:flex-row">
+    <!-- Sidebar (responsive) -->
+    <aside class="w-full md:w-64 bg-white border-b md:border-b-0 md:border-r flex flex-row md:flex-col justify-between md:justify-between items-center md:items-stretch">
+      <div class="flex flex-row md:flex-col w-full">
+        <div class="p-4 md:p-6 border-b w-full">
+          <h1 class="text-xl font-bold text-blue-700 text-center md:text-left">Admin Panel</h1>
         </div>
-        <nav class="mt-6">
-          <ul>
-            <li class="px-6 py-3 text-blue-600 font-semibold bg-blue-50 rounded-r-full">Payments</li>
+        <nav class="mt-0 md:mt-6 w-full">
+          <ul class="flex flex-row md:flex-col w-full">
+            <li class="px-4 py-2 md:px-6 md:py-3 text-blue-600 font-semibold bg-blue-50 rounded-t-full md:rounded-r-full w-full text-center md:text-left">Payments</li>
             <!-- Add more nav items here if needed -->
           </ul>
         </nav>
       </div>
-      <div class="p-6 border-t text-xs text-gray-400">&copy; 2025 CardForm</div>
+      <div class="p-4 md:p-6 border-t text-xs text-gray-400 w-full text-center">&copy; 2025 CardForm</div>
     </aside>
     <!-- Main Content -->
     <main class="flex-1 flex flex-col">
       <!-- Header -->
-      <header class="bg-white border-b px-8 py-4 flex items-center justify-between">
-        <h2 class="text-2xl font-bold text-slate-900">Payment Entries</h2>
-        <div class="flex gap-2">
+      <header class="bg-white border-b px-4 md:px-8 py-4 flex flex-col md:flex-row items-center justify-between gap-2">
+        <h2 class="text-2xl font-bold text-slate-900 text-center md:text-left">Payment Entries</h2>
+        <div class="flex gap-2 justify-center md:justify-end">
           <button id="exportCSV" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Export CSV</button>
           <button id="exportJSON" class="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700">Export JSON</button>
         </div>
       </header>
       <!-- Table -->
-      <section class="flex-1 px-8 py-6 overflow-x-auto">
-        <div class="bg-white rounded-xl shadow border p-4">
+      <section class="flex-1 px-2 md:px-8 py-4 md:py-6 overflow-x-auto">
+        <div class="bg-white rounded-xl shadow border p-2 md:p-4">
           <table class="min-w-full text-sm text-left">
             <thead class="bg-gray-100">
               <tr>
-                <th class="px-4 py-2">#</th>
-                <th class="px-4 py-2">Name</th>
-                <th class="px-4 py-2">Card</th>
-                <th class="px-4 py-2">Amount</th>
-                <th class="px-4 py-2">Date</th>
-                <th class="px-4 py-2">Actions</th>
+                <th class="px-2 md:px-4 py-2">#</th>
+                <th class="px-2 md:px-4 py-2">Name</th>
+                <th class="px-2 md:px-4 py-2">Card</th>
+                <th class="px-2 md:px-4 py-2">Amount</th>
+                <th class="px-2 md:px-4 py-2">Date</th>
+                <th class="px-2 md:px-4 py-2">Actions</th>
               </tr>
             </thead>
             <tbody id="entriesTable"></tbody>
@@ -56,8 +56,8 @@
     </main>
     <!-- Modal -->
     <div id="entryModal" class="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50 hidden">
-      <div class="bg-white rounded-lg shadow-lg p-6 w-full max-w-md relative">
-        <button id="closeModal" class="absolute top-2 right-2 text-gray-400 hover:text-gray-700">&times;</button>
+      <div class="bg-white rounded-lg shadow-lg p-4 md:p-6 w-full max-w-md relative">
+        <button id="closeModal" class="absolute top-2 right-2 text-gray-400 hover:text-gray-700 text-2xl">&times;</button>
         <h2 class="text-xl font-bold mb-4">Entry Details</h2>
         <div id="modalContent" class="space-y-2"></div>
       </div>
