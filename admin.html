@@ -8,29 +8,52 @@
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-50">
-  <section class="min-h-screen flex flex-col items-center justify-start px-4 sm:px-8 py-8">
-    <div class="max-w-4xl w-full bg-white rounded-2xl shadow-lg p-6 sm:p-10 border border-gray-200">
-      <h1 class="text-2xl font-bold text-slate-900 mb-6">Payment Entries Dashboard</h1>
-      <div class="flex justify-between items-center mb-4">
-        <button id="exportCSV" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Export CSV</button>
-        <button id="exportJSON" class="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700">Export JSON</button>
+  <div class="min-h-screen bg-gray-50 flex">
+    <!-- Sidebar -->
+    <aside class="w-64 bg-white border-r flex flex-col justify-between">
+      <div>
+        <div class="p-6 border-b">
+          <h1 class="text-xl font-bold text-blue-700">Admin Panel</h1>
+        </div>
+        <nav class="mt-6">
+          <ul>
+            <li class="px-6 py-3 text-blue-600 font-semibold bg-blue-50 rounded-r-full">Payments</li>
+            <!-- Add more nav items here if needed -->
+          </ul>
+        </nav>
       </div>
-      <div class="overflow-x-auto">
-        <table class="min-w-full text-sm text-left border">
-          <thead class="bg-gray-100">
-            <tr>
-              <th class="px-4 py-2">#</th>
-              <th class="px-4 py-2">Name</th>
-              <th class="px-4 py-2">Card</th>
-              <th class="px-4 py-2">Amount</th>
-              <th class="px-4 py-2">Date</th>
-              <th class="px-4 py-2">Actions</th>
-            </tr>
-          </thead>
-          <tbody id="entriesTable"></tbody>
-        </table>
-      </div>
-    </div>
+      <div class="p-6 border-t text-xs text-gray-400">&copy; 2025 CardForm</div>
+    </aside>
+    <!-- Main Content -->
+    <main class="flex-1 flex flex-col">
+      <!-- Header -->
+      <header class="bg-white border-b px-8 py-4 flex items-center justify-between">
+        <h2 class="text-2xl font-bold text-slate-900">Payment Entries</h2>
+        <div class="flex gap-2">
+          <button id="exportCSV" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Export CSV</button>
+          <button id="exportJSON" class="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700">Export JSON</button>
+        </div>
+      </header>
+      <!-- Table -->
+      <section class="flex-1 px-8 py-6 overflow-x-auto">
+        <div class="bg-white rounded-xl shadow border p-4">
+          <table class="min-w-full text-sm text-left">
+            <thead class="bg-gray-100">
+              <tr>
+                <th class="px-4 py-2">#</th>
+                <th class="px-4 py-2">Name</th>
+                <th class="px-4 py-2">Card</th>
+                <th class="px-4 py-2">Amount</th>
+                <th class="px-4 py-2">Date</th>
+                <th class="px-4 py-2">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="entriesTable"></tbody>
+          </table>
+          <div id="emptyState" class="text-center text-gray-500 py-8 hidden">No payment entries found.</div>
+        </div>
+      </section>
+    </main>
     <!-- Modal -->
     <div id="entryModal" class="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50 hidden">
       <div class="bg-white rounded-lg shadow-lg p-6 w-full max-w-md relative">
@@ -39,7 +62,8 @@
         <div id="modalContent" class="space-y-2"></div>
       </div>
     </div>
-  </section>
+  </div>
+  <script src="/assets/js/storage.js"></script>
   <script src="/assets/js/admin.js"></script>
 </body>
 </html>
