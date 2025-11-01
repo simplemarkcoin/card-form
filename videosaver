@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Video Downloader</title>
+</head>
+<body>
+<h2>Video Downloader</h2>
+
+<input id="email" placeholder="Mega Email"><br><br>
+<input id="password" type="password" placeholder="Mega Password"><br><br>
+<input id="link" placeholder="Video/Mega link"><br><br>
+
+<button onclick="download()">Download</button>
+
+<pre id="log"></pre>
+
+<script>
+const API = "PASTE_NGROK_URL_HERE"
+
+async function download() {
+  const email = document.getElementById("email").value
+  const password = document.getElementById("password").value
+  const link = document.getElementById("link").value
+  const log = document.getElementById("log")
+
+  log.textContent = "Starting..."
+
+  let r = await fetch(API + "/download", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ email, password, link })
+  })
+
+  let result = await r.json()
+  log.textContent = JSON.stringify(result, null, 2)
+}
+</script>
+
+</body>
+</html>
